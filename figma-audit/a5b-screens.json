@@ -1,0 +1,149 @@
+{
+  "generatedAt": "2026-11-17T12:25:37.864Z",
+  "notes": [],
+  "addedIcons": [],
+  "patched": [],
+  "background": [
+    {
+      "name": "HealthHub / Specialties",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Doctor list",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Doctor profile",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Choose a time",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Review and pay",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Booking confirmed",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Lab packages",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Package details",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Members and address",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Lab collection time",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Lab booking confirmed",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Report ready",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    }
+  ],
+  "contentHeights": {
+    "HealthHub / Specialties": 840,
+    "HealthHub / Doctor list": 909,
+    "HealthHub / Doctor profile": 1302,
+    "HealthHub / Choose a time": 906,
+    "HealthHub / Review and pay": 956,
+    "HealthHub / Booking confirmed": 877,
+    "HealthHub / Lab packages": 1463,
+    "HealthHub / Package details": 1225,
+    "HealthHub / Members and address": 844,
+    "HealthHub / Lab collection time": 638,
+    "HealthHub / Lab booking confirmed": 897,
+    "HealthHub / Report ready": 976
+  },
+  "section": {
+    "id": "3171:40415",
+    "x": 8419,
+    "y": 14883
+  },
+  "frames": [
+    {
+      "id": "3171:40416",
+      "name": "HealthHub / Specialties"
+    },
+    {
+      "id": "3171:40521",
+      "name": "HealthHub / Doctor list"
+    },
+    {
+      "id": "3171:40664",
+      "name": "HealthHub / Doctor profile"
+    },
+    {
+      "id": "3171:40790",
+      "name": "HealthHub / Choose a time"
+    },
+    {
+      "id": "3171:40909",
+      "name": "HealthHub / Review and pay"
+    },
+    {
+      "id": "3171:41009",
+      "name": "HealthHub / Booking confirmed"
+    },
+    {
+      "id": "3171:41078",
+      "name": "HealthHub / Lab packages"
+    },
+    {
+      "id": "3171:41290",
+      "name": "HealthHub / Package details"
+    },
+    {
+      "id": "3171:41422",
+      "name": "HealthHub / Members and address"
+    },
+    {
+      "id": "3171:41517",
+      "name": "HealthHub / Lab collection time"
+    },
+    {
+      "id": "3171:41605",
+      "name": "HealthHub / Lab booking confirmed"
+    },
+    {
+      "id": "3171:41674",
+      "name": "HealthHub / Report ready"
+    }
+  ]
+}

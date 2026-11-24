@@ -1,26 +1,29 @@
 {
   "expo": {
-    "name": "app-tmp",
-    "slug": "app-tmp",
+    "name": "HealthHub",
+    "slug": "healthhub",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "apptmp",
-    "userInterfaceStyle": "automatic",
+    "scheme": "healthhub",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F6F7FB",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/images/icon.png",
+      "bundleIdentifier": "com.sreerajh.healthhub"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#2E4482",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.sreerajh.healthhub"
     },
     "web": {
-      "output": "server",
+      "output": "single",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
@@ -28,9 +31,28 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
+          "backgroundColor": "#2E4482",
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "imageWidth": 96
+        }
+      ],
+      "expo-font",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "HealthHub uses your photos so you can add a picture to a family member's profile and upload health records.",
+          "cameraPermission": "HealthHub uses the camera so you can photograph prescriptions and reports.",
+          "microphonePermission": false
+        }
+      ],
+      "expo-sharing",
+      [
+        "expo-notifications",
+        {
+          "color": "#2E4482",
+          "defaultChannel": "reminders",
+          "enableRemoteNotifications": false
         }
       ]
     ],

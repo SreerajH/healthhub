@@ -41,3 +41,9 @@ example
 # generated native folders
 /ios
 /android
+
+# local secrets
+.env
+
+# throwaway QR for the dev tunnel
+expo-go-qr.png

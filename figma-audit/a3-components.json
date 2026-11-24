@@ -1,0 +1,460 @@
+{
+  "generatedAt": "2026-11-17T11:31:14.991Z",
+  "section": {
+    "id": "3170:25059",
+    "x": 26735,
+    "y": 4539,
+    "w": 1272,
+    "h": 9230
+  },
+  "icons": [
+    "Home",
+    "Document",
+    "Calendar",
+    "Calendar Tick",
+    "User",
+    "People",
+    "Search",
+    "Filter",
+    "Bell",
+    "Plus",
+    "Minus",
+    "Close",
+    "Tick",
+    "Tick Circle",
+    "Chevron Right",
+    "Chevron Left",
+    "Chevron Down",
+    "Arrow Left",
+    "Arrow Right",
+    "More",
+    "Edit",
+    "Trash",
+    "Upload",
+    "Download",
+    "Share",
+    "Copy",
+    "Camera",
+    "Gallery",
+    "Paperclip",
+    "Prescription",
+    "Flask",
+    "Scan",
+    "Syringe",
+    "Hospital",
+    "Pill",
+    "Stethoscope",
+    "Paw",
+    "Heart Pulse",
+    "Droplet",
+    "Clock",
+    "Alarm",
+    "Location",
+    "Directions",
+    "Phone",
+    "Shield Tick",
+    "Lock",
+    "ID Card",
+    "Card",
+    "Info",
+    "Warning",
+    "Help",
+    "Logout",
+    "Settings",
+    "Grid",
+    "Folder",
+    "Wifi Off",
+    "Refresh",
+    "Heart",
+    "Star Filled"
+  ],
+  "images": [
+    "consult",
+    "lab",
+    "vaccine",
+    "pet"
+  ],
+  "notes": [],
+  "components": [
+    {
+      "name": "StatusPill",
+      "id": "3170:25546",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Status=Upcoming",
+        "Status=Completed",
+        "Status=Cancelled",
+        "Status=Due soon",
+        "Status=Overdue",
+        "Status=Verified"
+      ],
+      "props": [
+        "Status:VARIANT"
+      ]
+    },
+    {
+      "name": "Button",
+      "id": "3170:25590",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Style=Primary, Size=L",
+        "Style=Secondary, Size=L",
+        "Style=Ghost, Size=L",
+        "Style=Danger, Size=L",
+        "Style=Danger Ghost, Size=L",
+        "Style=Primary, Size=M",
+        "Style=Secondary, Size=M",
+        "Style=Ghost, Size=M",
+        "Style=Danger, Size=M",
+        "Style=Danger Ghost, Size=M"
+      ],
+      "props": [
+        "Label:TEXT",
+        "Show icon:BOOLEAN",
+        "Icon:INSTANCE_SWAP",
+        "Style:VARIANT",
+        "Size:VARIANT"
+      ]
+    },
+    {
+      "name": "Chip",
+      "id": "3170:25600",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "State=Active",
+        "State=Inactive"
+      ],
+      "props": [
+        "Label:TEXT",
+        "State:VARIANT"
+      ]
+    },
+    {
+      "name": "Segmented",
+      "id": "3170:25614",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Active=Left",
+        "Active=Right"
+      ],
+      "props": [
+        "Left:TEXT",
+        "Right:TEXT",
+        "Active:VARIANT"
+      ]
+    },
+    {
+      "name": "IconButton",
+      "id": "3170:25630",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Style=Plain",
+        "Style=Soft",
+        "Style=Primary"
+      ],
+      "props": [
+        "Icon:INSTANCE_SWAP",
+        "Style:VARIANT"
+      ]
+    },
+    {
+      "name": "Avatar",
+      "id": "3170:25652",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Size=S, Tone=Navy",
+        "Size=S, Tone=Teal",
+        "Size=S, Tone=Amber",
+        "Size=M, Tone=Navy",
+        "Size=M, Tone=Teal",
+        "Size=M, Tone=Amber",
+        "Size=L, Tone=Navy",
+        "Size=L, Tone=Teal",
+        "Size=L, Tone=Amber"
+      ],
+      "props": [
+        "Initials:TEXT",
+        "Size:VARIANT",
+        "Tone:VARIANT"
+      ]
+    },
+    {
+      "name": "MemberChip",
+      "id": "3170:25666",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "State=Selected",
+        "State=Default"
+      ],
+      "props": [
+        "Name:TEXT",
+        "State:VARIANT"
+      ]
+    },
+    {
+      "name": "MemberAdd",
+      "id": "3170:25668",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": []
+    },
+    {
+      "name": "MemberSwitcher",
+      "id": "3170:25674",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": []
+    },
+    {
+      "name": "QuickAction",
+      "id": "3170:25716",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Type=Illustration",
+        "Type=Icon"
+      ],
+      "props": [
+        "Label:TEXT",
+        "Icon:INSTANCE_SWAP",
+        "Type:VARIANT"
+      ]
+    },
+    {
+      "name": "SearchBar",
+      "id": "3170:25765",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": [
+        "Placeholder:TEXT"
+      ]
+    },
+    {
+      "name": "SectionHeader",
+      "id": "3170:25774",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": [
+        "Title:TEXT",
+        "Link:TEXT",
+        "Show link:BOOLEAN"
+      ]
+    },
+    {
+      "name": "TopBar",
+      "id": "3170:25778",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": [
+        "Title:TEXT",
+        "Show action:BOOLEAN"
+      ]
+    },
+    {
+      "name": "ListRow",
+      "id": "3170:25793",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": [
+        "Label:TEXT",
+        "Value:TEXT",
+        "Show value:BOOLEAN",
+        "Show chevron:BOOLEAN",
+        "Divider:BOOLEAN",
+        "Icon:INSTANCE_SWAP"
+      ]
+    },
+    {
+      "name": "ListRow Danger",
+      "id": "3170:25801",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": [
+        "Label:TEXT",
+        "Icon:INSTANCE_SWAP"
+      ]
+    },
+    {
+      "name": "Input",
+      "id": "3170:25828",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "State=Default",
+        "State=Focused",
+        "State=Error"
+      ],
+      "props": [
+        "Label:TEXT",
+        "Value:TEXT",
+        "State:VARIANT"
+      ]
+    },
+    {
+      "name": "OTPInput",
+      "id": "3170:25829",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": []
+    },
+    {
+      "name": "EmptyState",
+      "id": "3170:25845",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": [
+        "Title:TEXT",
+        "Message:TEXT",
+        "Icon:INSTANCE_SWAP",
+        "Show badge:BOOLEAN"
+      ]
+    },
+    {
+      "name": "ComingUpCard",
+      "id": "3170:25936",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Kind=Appointment",
+        "Kind=Vaccine",
+        "Kind=Medicine"
+      ],
+      "props": [
+        "Kind:VARIANT"
+      ]
+    },
+    {
+      "name": "RecordCard",
+      "id": "3170:26020",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Type=Prescription",
+        "Type=Lab report",
+        "Type=Scan",
+        "Type=Vaccine",
+        "Type=Discharge"
+      ],
+      "props": [
+        "Type:VARIANT"
+      ]
+    },
+    {
+      "name": "AppointmentCard",
+      "id": "3170:26107",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Status=Upcoming",
+        "Status=Completed",
+        "Status=Cancelled"
+      ],
+      "props": [
+        "Doctor:TEXT",
+        "Specialty:TEXT",
+        "Clinic:TEXT",
+        "Member:TEXT",
+        "Date:TEXT",
+        "Time:TEXT",
+        "Status:VARIANT"
+      ]
+    },
+    {
+      "name": "DoctorCard",
+      "id": "3170:26111",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": [
+        "Name:TEXT",
+        "Specialty:TEXT",
+        "Experience:TEXT",
+        "Rating value:TEXT",
+        "Reviews:TEXT",
+        "Fee value:TEXT",
+        "Next slot:TEXT"
+      ]
+    },
+    {
+      "name": "LabPackageCard",
+      "id": "3170:26145",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": [
+        "Name:TEXT",
+        "Tests:TEXT",
+        "Report time:TEXT",
+        "Price value:TEXT",
+        "MRP:TEXT",
+        "Discount:TEXT",
+        "Home collection:BOOLEAN"
+      ]
+    },
+    {
+      "name": "DayPill",
+      "id": "3170:26189",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "State=Default",
+        "State=Selected",
+        "State=Disabled"
+      ],
+      "props": [
+        "Day:TEXT",
+        "Date:TEXT",
+        "State:VARIANT"
+      ]
+    },
+    {
+      "name": "TimeSlot",
+      "id": "3170:26196",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "State=Default",
+        "State=Selected",
+        "State=Disabled"
+      ],
+      "props": [
+        "Time:TEXT",
+        "State:VARIANT"
+      ]
+    },
+    {
+      "name": "SlotPicker",
+      "id": "3170:26197",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": []
+    },
+    {
+      "name": "NavBar",
+      "id": "3170:26346",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Active=Home",
+        "Active=Records",
+        "Active=Bookings",
+        "Active=Profile"
+      ],
+      "props": [
+        "Active:VARIANT"
+      ]
+    },
+    {
+      "name": "Toast",
+      "id": "3170:26362",
+      "type": "COMPONENT_SET",
+      "variants": [
+        "Type=Success",
+        "Type=Error"
+      ],
+      "props": [
+        "Type:VARIANT"
+      ]
+    },
+    {
+      "name": "ConfirmDialog",
+      "id": "3170:26363",
+      "type": "COMPONENT",
+      "variants": null,
+      "props": [
+        "Title:TEXT",
+        "Message:TEXT"
+      ]
+    }
+  ]
+}

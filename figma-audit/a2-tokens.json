@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-11-17T08:49:48.848Z",
+  "variables": {
+    "created": 31,
+    "updated": 0
+  },
+  "textStyles": {
+    "created": 8,
+    "updated": 0
+  },
+  "collections": [
+    {
+      "name": "HealthHub/Colors",
+      "created": true,
+      "mode": "Light",
+      "count": 18
+    },
+    {
+      "name": "HealthHub/Spacing",
+      "created": true,
+      "mode": "Value",
+      "count": 8
+    },
+    {
+      "name": "HealthHub/Radius",
+      "created": true,
+      "mode": "Value",
+      "count": 5
+    }
+  ],
+  "colors": [
+    "brand/primary #2E4482",
+    "brand/primary-soft #E8ECF7",
+    "accent/teal #14A38B",
+    "accent/teal-soft #E3F5F1",
+    "accent/teal-text #0F7A68",
+    "status/warning #B7791F",
+    "status/warning-soft #FDF3E1",
+    "status/warning-text #94600F",
+    "status/danger #C93A3A",
+    "status/danger-soft #FCEBEB",
+    "status/danger-text #B03030",
+    "text/primary #1B2333",
+    "text/secondary #5B6475",
+    "text/inverse #FFFFFF",
+    "surface/background #F6F7FB",
+    "surface/card #FFFFFF",
+    "border/subtle #E4E7EF",
+    "border/strong #858D9E"
+  ],
+  "styles": [
+    "HealthHub/Display/28 Bold",
+    "HealthHub/Title/22 SemiBold",
+    "HealthHub/Heading/18 SemiBold",
+    "HealthHub/Subheading/16 SemiBold",
+    "HealthHub/Body/15 Regular",
+    "HealthHub/Body/14 Medium",
+    "HealthHub/Caption/13 Regular",
+    "HealthHub/Micro/12 Medium"
+  ],
+  "contrast": [
+    "text/primary on surface/background = 14.7",
+    "text/secondary on surface/card = 5.96",
+    "text/inverse on brand/primary = 9.27",
+    "brand/primary on brand/primary-soft = 7.85",
+    "accent/teal-text on accent/teal-soft = 4.64",
+    "status/warning-text on status/warning-soft = 4.84",
+    "status/danger-text on status/danger-soft = 5.5",
+    "text/inverse on status/danger = 5.06"
+  ],
+  "section": {
+    "id": "3168:21098",
+    "x": 25183,
+    "y": 4539,
+    "w": 1312,
+    "h": 2266
+  }
+}

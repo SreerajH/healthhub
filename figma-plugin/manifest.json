@@ -1,0 +1,25 @@
+{
+  "name": "HealthHub Builder",
+  "id": "healthhub-builder-local",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["none"],
+    "devAllowedDomains": ["http://localhost:4201"],
+    "reasoning": "Dev only: sends the audit report and screen PNGs to a local receiver that saves them into the repo."
+  },
+  "menu": [
+    { "name": "A1 · Audit (read-only)", "command": "a1" },
+    { "name": "A2 · Tokens (variables + text styles)", "command": "a2" },
+    { "name": "A3 · Component kit", "command": "a3" },
+    { "name": "A4 · Rebuild existing screens", "command": "a4" },
+    { "name": "A5a · New screens 1–14", "command": "a5a" },
+    { "name": "A5b · New screens 15–26 (booking)", "command": "a5b" },
+    { "name": "A5c · New screens 27–37", "command": "a5c" },
+    { "name": "A6 · Prototype + QA report", "command": "a6" },
+    { "name": "App · Export tile art (WebP)", "command": "tiles" },
+    { "name": "Fix · Screen backgrounds", "command": "fixbg" }
+  ]
+}

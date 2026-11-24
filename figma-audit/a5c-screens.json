@@ -1,0 +1,136 @@
+{
+  "generatedAt": "2026-11-17T12:34:41.439Z",
+  "notes": [],
+  "addedIcons": [],
+  "patched": [],
+  "background": [
+    {
+      "name": "HealthHub / Appointment details",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Reschedule",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Cancel appointment",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#888D97 / #FFFFFF",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Reminders",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Add reminder",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Link ABHA",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Privacy and data",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Help and FAQs",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Offline",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Error",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    },
+    {
+      "name": "HealthHub / Home loading",
+      "fill": "surface/background as plain #F6F7FB",
+      "pixels": "#F6F7FB / #F6F7FB",
+      "ok": true
+    }
+  ],
+  "contentHeights": {
+    "HealthHub / Appointment details": 945,
+    "HealthHub / Reschedule": 728,
+    "HealthHub / Cancel appointment": 945,
+    "HealthHub / Reminders": 1062,
+    "HealthHub / Add reminder": 1018,
+    "HealthHub / Link ABHA": 940,
+    "HealthHub / Privacy and data": 1027,
+    "HealthHub / Help and FAQs": 783,
+    "HealthHub / Home loading": 944
+  },
+  "section": {
+    "id": "3171:42722",
+    "x": 8419,
+    "y": 17347
+  },
+  "frames": [
+    {
+      "id": "3171:42723",
+      "name": "HealthHub / Appointment details"
+    },
+    {
+      "id": "3171:42821",
+      "name": "HealthHub / Reschedule"
+    },
+    {
+      "id": "3171:42919",
+      "name": "HealthHub / Cancel appointment"
+    },
+    {
+      "id": "3171:43025",
+      "name": "HealthHub / Reminders"
+    },
+    {
+      "id": "3171:43159",
+      "name": "HealthHub / Add reminder"
+    },
+    {
+      "id": "3171:43293",
+      "name": "HealthHub / Link ABHA"
+    },
+    {
+      "id": "3171:43367",
+      "name": "HealthHub / Privacy and data"
+    },
+    {
+      "id": "3171:43468",
+      "name": "HealthHub / Help and FAQs"
+    },
+    {
+      "id": "3171:43552",
+      "name": "HealthHub / Offline"
+    },
+    {
+      "id": "3171:43616",
+      "name": "HealthHub / Error"
+    },
+    {
+      "id": "3171:43676",
+      "name": "HealthHub / Home loading"
+    }
+  ]
+}
