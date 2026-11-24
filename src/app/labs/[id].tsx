@@ -68,7 +68,8 @@ export default function PackageDetailsScreen() {
         <StatTiles items={[
           [p.testsCount === 1 ? 'Test' : 'Tests', String(p.testsCount)],
           ['Report in', `${p.reportHours} hours`],
-          ['Fasting', p.fastingHours ? `${p.fastingHours} h` : 'Not needed'],
+          // short values: the tile is a third of the width and "Not needed" got cut off
+          ['Fasting', p.fastingHours ? `${p.fastingHours} h` : 'None'],
         ]} />
 
         {p.fastingHours ? (
@@ -87,6 +88,16 @@ export default function PackageDetailsScreen() {
             {p.groups.map((g, i) => {
               const isOpen = open === i;
               const more = g.count - g.tests.length;
+              // a single test (T3, TSH…) is just a row: no "0 tests" count, no arrow that opens nothing
+              const single = !g.tests.length || (g.tests.length === 1 && g.tests[0] === g.name);
+              if (single) {
+                return (
+                  <View key={g.name} style={[styles.groupHead, i > 0 && styles.groupDivider]} accessible accessibilityLabel={g.name}>
+                    <Icon name="Tick Circle" size={18} color={C.tealText} />
+                    <Text style={[Type.body, { color: C.text, flex: 1 }]}>{g.name}</Text>
+                  </View>
+                );
+              }
               return (
                 <View key={g.name} style={i > 0 && styles.groupDivider}>
                   <Pressable onPress={() => setOpen(isOpen ? null : i)} accessibilityRole="button"

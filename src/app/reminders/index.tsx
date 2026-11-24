@@ -11,7 +11,7 @@ import { dayLabel, daysFromToday, timeLabel } from '@/lib/dates';
 import { firstName } from '@/lib/family';
 import { useMembers , useClearDose, useDoseLog, useLogDose, useReminders } from '@/hooks';
 
-import { dosesFor, repeatLabel, streakFor, vaccinesFor, type Dose } from '@/lib/reminder-schedule';
+import { dosesFor, notYet, repeatLabel, streakFor, takeFrom as earliest, vaccinesFor, type Dose } from '@/lib/reminder-schedule';
 
 /** "After breakfast" → "after breakfast", without touching names like "Tuesdays". */
 const lowerFirst = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
@@ -104,15 +104,27 @@ export default function RemindersScreen() {
                         <Tag label={dose.state === 'taken' ? `Taken at ${timeLabel(dose.at ?? dose.time)}` : 'Skipped'}
                           icon={dose.state === 'taken' ? 'Tick Circle' : 'Close'} tone={dose.state === 'taken' ? 'teal' : 'navy'} />
                       </View>
+                    ) : notYet(dose.time) ? (
+                      // a 9 PM dose can't be "taken" at noon: offer it from an hour before
+                      <View style={{ flexDirection: 'row' }}>
+                        <Tag label={`Upcoming · from ${timeLabel(earliest(dose.time))}`} icon="Clock" tone="navy" />
+                      </View>
                     ) : (
+                      <View style={{ gap: Space.sm }}>
+                      {/* its own line: on a phone, Overdue + Taken + Skip don't fit side by side */}
+                      {dose.missed ? (
+                        <View style={{ flexDirection: 'row' }}>
+                          <Tag label="Overdue" icon="Warning" tone="amber" />
+                        </View>
+                      ) : null}
                       <View style={styles.doseActions}>
-                        <Button label="Taken" icon="Tick" variant="secondary" size="M" onPress={() => act(dose, 'taken')}
+                        <Button label="Taken" icon="Tick" variant="positive" size="M" onPress={() => act(dose, 'taken')}
                           accessibilityLabel={`Mark ${dose.reminder.name} at ${timeLabel(dose.time)} as taken`} />
                         <Pressable onPress={() => act(dose, 'skipped')} accessibilityRole="button"
                           accessibilityLabel={`Skip ${dose.reminder.name} at ${timeLabel(dose.time)}`} style={styles.skip}>
                           <Text style={[Type.bodyMedium, { color: C.primary }]}>Skip</Text>
                         </Pressable>
-                        {dose.missed ? <Text style={[Type.micro, { color: C.warningText }]}>Overdue</Text> : null}
+                      </View>
                       </View>
                     )}
                   </View>

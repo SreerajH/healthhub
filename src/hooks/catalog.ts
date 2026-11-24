@@ -88,7 +88,9 @@ export function useNextSlots(doctorIds: string[]) {
         .select('doctor_id, starts_at')
         .in('doctor_id', ids)
         .eq('is_booked', false)
-        .gte('starts_at', new Date().toISOString())
+        // same rule as the slot picker and book_appointment: an hour's notice, so the list never
+        // advertises a time that can't actually be booked
+        .gte('starts_at', new Date(Date.now() + 60 * 60 * 1000).toISOString())
         .order('starts_at')
         .limit(500);
       if (error) throw error;

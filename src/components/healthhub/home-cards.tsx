@@ -1,6 +1,7 @@
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import {
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -108,9 +109,45 @@ const KIND: Record<ComingUpItem['kind'], { icon: IconName; bg: string; fg: strin
 };
 
 /** Figma "ComingUpCard": icon, status pill above the title, member + when, one secondary action. */
-export function ComingUpCard({ item, member, onPress, onAction }: { item: ComingUpItem; member?: Member; onPress?: () => void; onAction?: () => void }) {
+export function ComingUpCard({ item, member, hero, onPress, onAction }: {
+  item: ComingUpItem; member?: Member; onPress?: () => void; onAction?: () => void;
+  /** the next thing coming up: a navy card with a lime "when" chip, the one focal point on Home */
+  hero?: boolean;
+}) {
   const k = KIND[item.kind];
   const first = member?.name.split(' ')[0] ?? '';
+  if (hero) {
+    return (
+      <Pressable
+        onPress={onPress}
+        // no role on web: RN-web would render a <button> and the Button inside it would nest (same as Card)
+        accessibilityRole={Platform.OS === 'web' ? undefined : 'button'}
+        accessibilityLabel={`Next up:${item.title}, ${item.when}${first ? ', for ' + first : ''}`}
+        style={({ pressed }) => [styles.hero, pressed && { opacity: 0.92 }]}>
+        <View style={styles.cuHead}>
+          <View style={[styles.cuIcon, { backgroundColor: 'rgba(255,255,255,0.14)' }]}>
+            <Icon name={k.icon} size={22} color={C.textInverse} />
+          </View>
+          <View style={{ flex: 1, gap: 4 }}>
+            <Text style={[Type.micro, { color: 'rgba(255,255,255,0.75)' }]}>{item.pill.label}</Text>
+            <Text style={[Type.subheading, { color: C.textInverse }]} numberOfLines={2}>{item.title}</Text>
+            {item.subtitle ? (
+              <Text style={[Type.caption, { color: 'rgba(255,255,255,0.8)' }]} numberOfLines={2}>{item.subtitle}</Text>
+            ) : null}
+          </View>
+        </View>
+        <View style={styles.heroWhen}>
+          <Icon name="Clock" size={16} color={C.primary} />
+          <Text style={[Type.bodyMedium, { color: C.primary, flexShrink: 1 }]} numberOfLines={1}>
+            {first ? `${first} · ` : ''}{item.when}
+          </Text>
+        </View>
+        <View style={styles.heroAction}>
+          <Button label={item.action.label} icon={item.action.icon} variant="secondary" size="M" fill onPress={onAction} />
+        </View>
+      </Pressable>
+    );
+  }
   return (
     <Card onPress={onPress} accessibilityLabel={`${item.title}, ${item.when}${first ? ', for ' + first : ''}`}>
       <View style={{ gap: Space.lg }}>
@@ -170,14 +207,17 @@ export function RecordCard({
         </View>
         <View style={{ flex: 1, gap: 2 }}>
           <Text style={[Type.micro, { color: k.fg }]}>{k.label}</Text>
-          <Text style={[Type.subheading, { color: C.text }]} numberOfLines={1}>{title}</Text>
+          <Text style={[Type.subheading, { color: C.text }]} numberOfLines={2}>{title}</Text>
           <Text style={[Type.caption, { color: C.textSecondary }]} numberOfLines={1}>{provider}</Text>
           <View style={styles.recMeta}>
             <Text style={[Type.caption, { color: C.textSecondary }]}>{meta}</Text>
-            <View style={styles.recFiles}>
-              <Icon name="Paperclip" size={14} color={C.textSecondary} />
-              <Text style={[Type.micro, { color: C.textSecondary }]}>{files}</Text>
-            </View>
+            {/* a "0" next to a paperclip reads like an error, so only show it when there are files */}
+            {files > 0 ? (
+              <View style={styles.recFiles}>
+                <Icon name="Paperclip" size={14} color={C.textSecondary} />
+                <Text style={[Type.micro, { color: C.textSecondary }]}>{files}</Text>
+              </View>
+            ) : null}
           </View>
         </View>
         <Icon name="Chevron Right" size={20} color={C.textSecondary} />
@@ -290,6 +330,12 @@ const styles = StyleSheet.create({
   cuHead: { flexDirection: 'row', gap: Space.md, alignItems: 'flex-start' },
   cuIcon: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
   cuInfo: { flexDirection: 'row', alignItems: 'center', gap: Space.sm },
+  hero: { backgroundColor: C.primary, borderRadius: Radius.card, padding: Space.lg, gap: Space.lg },
+  heroWhen: {
+    flexDirection: 'row', alignItems: 'center', gap: Space.sm, alignSelf: 'flex-start',
+    backgroundColor: C.highlight, borderRadius: Radius.pill, paddingHorizontal: Space.md, paddingVertical: Space.sm,
+  },
+  heroAction: { flexDirection: 'row' },
   recRow: { flexDirection: 'row', alignItems: 'center', gap: Space.md },
   recTile: { width: 48, height: 48, borderRadius: Radius.button, alignItems: 'center', justifyContent: 'center' },
   recMeta: { flexDirection: 'row', alignItems: 'center', gap: Space.sm },

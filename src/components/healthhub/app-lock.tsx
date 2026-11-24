@@ -1,9 +1,9 @@
-import { usePreventScreenCapture } from 'expo-screen-capture';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { AppState, Platform, StyleSheet, Text, View } from 'react-native';
 
 import { C, Radius, Space, Type } from '@/constants/healthhub';
 import { useAppLock, useLocked } from '@/lib/app-lock';
+import { usePreventScreenCapture } from '@/lib/screen-capture';
 
 import { Button } from './button';
 import { Icon } from './icon';

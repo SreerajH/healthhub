@@ -81,7 +81,8 @@ export default function SpecialtiesScreen() {
                   accessibilityRole="button" accessibilityLabel={s.label}
                   style={({ pressed }) => [styles.tile, pressed && { backgroundColor: C.primarySoft }]}>
                   <View style={styles.tileIcon}><Icon name={s.icon as IconName} size={24} color={C.primary} /></View>
-                  <Text style={[Type.bodyMedium, styles.tileLabel]} numberOfLines={2}>{s.label}</Text>
+                  {/* one long word ("Orthopaedics") would break mid-word, so it gets a smaller size instead */}
+                  <Text style={[Type.bodyMedium, styles.tileLabel, !s.label.includes(" ") && s.label.length > 11 && { fontSize: 12 }]} numberOfLines={2}>{s.label}</Text>
                 </Pressable>
               ))}
               {Array.from({ length: 3 - row.length }, (_, k) => <View key={`pad${k}`} style={{ flex: 1 }} />)}

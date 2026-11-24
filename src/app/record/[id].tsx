@@ -125,7 +125,7 @@ function RecordDetailsScreenInner() {
       <View style={[styles.footer, { paddingBottom: insets.bottom + Space.md }]}>
         <Button label="Share" icon="Share" variant="secondary" fill style={{ flex: 1 }} loading={working === 'share'}
           disabled={!!working} onPress={() => run('share')} />
-        <Button label="Download PDF" icon="Download" fill style={{ flex: 1 }} loading={working === 'pdf'}
+        <Button label={nFiles ? 'Download PDF' : 'Save as PDF'} icon="Download" fill style={{ flex: 1 }} loading={working === 'pdf'}
           disabled={!!working} onPress={() => run('pdf')} />
       </View>
 
@@ -183,7 +183,9 @@ function Preview({
             <View key={i} style={[styles.line, { width: `${f * 100}%` }]} />
           ))}
         </View>
-        <Text style={[Type.caption, { color: C.textSecondary }]}>{count} file{count === 1 ? '' : 's'} · sample record</Text>
+        <Text style={[Type.caption, { color: C.textSecondary }]}>
+          {count ? `${count} file${count === 1 ? '' : 's'}` : 'No files attached · the PDF holds these details'}
+        </Text>
       </View>
     );
   }

@@ -7,14 +7,14 @@
     "icon": "./assets/images/icon.png",
     "scheme": "healthhub",
     "userInterfaceStyle": "light",
-    "backgroundColor": "#F6F7FB",
+    "backgroundColor": "#F1F3F8",
     "ios": {
       "icon": "./assets/images/icon.png",
       "bundleIdentifier": "com.sreerajh.healthhub"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#2E4482",
+        "backgroundColor": "#1F2E5C",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
@@ -31,7 +31,7 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#2E4482",
+          "backgroundColor": "#1F2E5C",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 96
         }
@@ -50,7 +50,7 @@
       [
         "expo-notifications",
         {
-          "color": "#2E4482",
+          "color": "#1F2E5C",
           "defaultChannel": "reminders",
           "enableRemoteNotifications": false
         }

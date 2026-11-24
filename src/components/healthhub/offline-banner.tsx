@@ -1,38 +1,48 @@
 import NetInfo from '@react-native-community/netinfo';
 import { onlineManager } from '@tanstack/react-query';
-import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { useEffect, useRef, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { C, Radius, Space, Type } from '@/constants/healthhub';
+import { C } from '@/constants/healthhub';
 
-import { Icon } from './icon';
+import { useToast } from './feedback';
 
 // React Query pauses fetches while offline and retries them the moment the connection is back
 onlineManager.setEventListener((setOnline) =>
   NetInfo.addEventListener((s) => setOnline(s.isConnected !== false && s.isInternetReachable !== false)),
 );
 
-/** A small strip at the top while there's no connection; what's already loaded stays on screen. */
+/**
+ * Offline: the status-bar area turns dark for as long as it lasts (it sits in the safe-area inset, so it
+ * never covers a header — the old floating pill did), and a toast says so once when the connection drops
+ * and once when it's back. Text inside the status bar would collide with the clock or a punch-hole camera.
+ */
 export function OfflineBanner() {
   const [online, setOnline] = useState(onlineManager.isOnline());
   const insets = useSafeAreaInsets();
-  useEffect(() => onlineManager.subscribe(setOnline), []);
+  const toast = useToast();
+  const wasOnline = useRef(online);
+
+  useEffect(() => onlineManager.subscribe((now) => {
+    setOnline(now);
+    if (now === wasOnline.current) return;
+    wasOnline.current = now;
+    toast(now
+      ? { message: 'Back online' }
+      : { message: 'You’re offline. Showing what’s already saved.', type: 'error' });
+  }), [toast]);
+
   if (online) return null;
   return (
-    <View style={[styles.wrap, { top: insets.top + Space.xs }]} pointerEvents="none">
-      <View style={styles.pill} accessibilityRole="alert" accessibilityLiveRegion="polite">
-        <Icon name="Warning" size={18} color={C.textInverse} />
-        <Text style={[Type.caption, { color: C.textInverse }]}>You&apos;re offline. Showing what&apos;s already loaded.</Text>
-      </View>
-    </View>
+    <>
+      <StatusBar style="light" />
+      <View style={[styles.strip, { height: insets.top }]} pointerEvents="none" />
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  wrap: { position: 'absolute', left: 0, right: 0, alignItems: 'center' },
-  pill: {
-    flexDirection: 'row', alignItems: 'center', gap: Space.sm, paddingHorizontal: Space.lg, paddingVertical: Space.sm,
-    borderRadius: Radius.pill, backgroundColor: C.text,
-  },
+  strip: { position: 'absolute', top: 0, left: 0, right: 0, backgroundColor: C.text },
 });

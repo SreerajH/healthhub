@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 
 import { todayISO, type Doctor, type LabPackage } from '@/data/types';
 import { dayLabel, daysFromToday, relativeDay, timeLabel } from '@/lib/dates';
+import { notYet } from '@/lib/reminder-schedule';
 
 import { useBookings } from './bookings';
 import { useLabPackages, useDoctors } from './catalog';
@@ -17,7 +18,7 @@ export type ComingUpItem = {
   subtitle: string;
   when: string;
   pill: { status: 'upcoming' | 'dueSoon'; label?: string };
-  action: { label: string; icon: 'Directions' | 'Calendar' | 'Tick' | 'Info' };
+  action: { label: string; icon: 'Directions' | 'Calendar' | 'Tick' | 'Info' | 'Alarm' };
 };
 
 export function useComingUp(memberId?: string) {
@@ -87,7 +88,8 @@ export function useComingUp(memberId?: string) {
           title: r.name, subtitle: r.note ? `${r.dose} · ${r.note}` : r.dose,
           when: `Today · ${timeLabel(next)}`,
           pill: { status: 'upcoming', label: 'Today' },
-          action: { label: 'Mark as taken', icon: 'Tick' },
+          // only offer Mark as taken once the dose is close; until then the button opens Reminders
+          action: notYet(next.slice(11)) ? { label: 'See reminders', icon: 'Alarm' } : { label: 'Mark as taken', icon: 'Tick' },
         });
       }
     }

@@ -4,11 +4,13 @@ import { C, Radius, Type } from '@/constants/healthhub';
 
 import { Icon, type IconName } from './icon';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'dangerGhost';
+export type ButtonVariant = 'primary' | 'secondary' | 'positive' | 'ghost' | 'danger' | 'dangerGhost';
 
 const COLORS: Record<ButtonVariant, { bg: string; fg: string }> = {
   primary: { bg: C.primary, fg: C.textInverse },
   secondary: { bg: C.primarySoft, fg: C.primary },
+  // health actions: mark as taken, book a test (teal, white text at 5.2:1)
+  positive: { bg: C.tealText, fg: C.textInverse },
   ghost: { bg: 'transparent', fg: C.primary },
   danger: { bg: C.danger, fg: C.textInverse },
   dangerGhost: { bg: 'transparent', fg: C.dangerText },

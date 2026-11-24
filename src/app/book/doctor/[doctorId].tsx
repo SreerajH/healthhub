@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Avatar, Button, Chip, DayStrip, EmptyState, SlotGrid, StickyFooter, TopBar } from '@/components/healthhub';
 import { C, Space, Type } from '@/constants/healthhub';
-import { inr } from '@/data/types';
+import { ageOf, inr, type Member, type SpecialtyId } from '@/data/types';
 import { useDoctor, useMembers, useSlots } from '@/hooks';
 import { daysFrom, groupSlots, useDraft, whenLabel } from '@/lib/booking';
 import { firstName } from '@/lib/family';
@@ -22,7 +22,9 @@ export default function ChooseTimeScreen() {
   const days = useMemo(() => daysFrom(slots), [slots]);
 
   const sameFlow = draft.kind === 'doctor' && draft.doctorId === doctorId;
-  const [memberId, setMemberId] = useState(() => (sameFlow && draft.memberId) || selected);
+  const [pickedMember, setMemberId] = useState<string | null>(() => (sameFlow && draft.memberId) || null);
+  // default to someone this doctor actually sees: a gynaecologist shouldn't start on Aarav, nor a paediatrician on an adult
+  const memberId = pickedMember ?? defaultPatient(members, selected, d?.specialtyId) ?? null;
   const [at, setAt] = useState<string | null>(() => (sameFlow && draft.at) || null);
   const [pickedDate, setPickedDate] = useState<string | null>(() => (sameFlow && draft.at ? draft.at.slice(0, 10) : null));
   // until someone picks a day, show the first one with free slots
@@ -71,6 +73,11 @@ export default function ChooseTimeScreen() {
               <Chip key={m.id} label={firstName(m)} active={m.id === memberId} onPress={() => setMemberId(m.id)} />
             ))}
           </View>
+          {member && d && !fits(member, d.specialtyId) ? (
+            <Text style={[Type.caption, { color: C.warningText }]}>
+              {d.specialtyId === 'paeds' ? 'Paediatricians see children under 18.' : 'Gynaecologists see women.'} Check who this is for.
+            </Text>
+          ) : null}
         </View>
 
         <DayStrip days={days} value={date} onChange={(x) => { setDate(x); if (at && !at.startsWith(x)) setAt(null); }} />
@@ -94,3 +101,17 @@ const styles = StyleSheet.create({
   doc: { flexDirection: 'row', alignItems: 'center', gap: Space.md },
   chips: { flexDirection: 'row', flexWrap: 'wrap', columnGap: Space.sm },
 });
+
+/** Does this specialty see this person? Only the two clear-cut cases; everyone else fits. */
+function fits(m: Member, specialty?: SpecialtyId) {
+  if (specialty === 'gynae') return m.gender === 'female';
+  if (specialty === 'paeds') return ageOf(m.dob) < 18;
+  return true;
+}
+
+/** The selected person if they fit, otherwise the first family member who does (or nobody). */
+function defaultPatient(members: Member[], selected: string | null | undefined, specialty?: SpecialtyId) {
+  const sel = members.find((m) => m.id === selected);
+  if (sel && fits(sel, specialty)) return sel.id;
+  return members.find((m) => fits(m, specialty))?.id;
+}

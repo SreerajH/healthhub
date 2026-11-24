@@ -40,12 +40,12 @@ export function setupNotifications() {
       await Notifications.setNotificationChannelAsync('reminders', {
         name: 'Medicine and vaccine reminders',
         importance: AndroidImportance.HIGH,
-        lightColor: '#2E4482',
+        lightColor: '#1F2E5C',
       });
       await Notifications.setNotificationChannelAsync('bookings', {
         name: 'Appointments and lab tests',
         importance: AndroidImportance.DEFAULT,
-        lightColor: '#2E4482',
+        lightColor: '#1F2E5C',
       });
     }
 

@@ -108,3 +108,20 @@ export function repeatLabel(days: number[]) {
 }
 
 export { DAY_SHORT };
+
+// ---------- when a dose can be marked ----------
+/** A dose can be marked taken from this many minutes before its time (not, say, a 9 PM dose at noon). */
+export const TAKE_EARLY_MIN = 60;
+
+/** "21:00" → "20:00": the earliest a dose at `time` can be marked taken */
+export function takeFrom(time: string) {
+  const [h, m] = time.split(':').map(Number);
+  const mins = Math.max(0, h * 60 + m - TAKE_EARLY_MIN);
+  return `${String(Math.floor(mins / 60)).padStart(2, '0')}:${String(mins % 60).padStart(2, '0')}`;
+}
+
+/** Is today's dose at `time` still too far ahead to mark? */
+export function notYet(time: string, now = new Date()) {
+  const nowHm = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+  return nowHm < takeFrom(time);
+}

@@ -19,7 +19,7 @@ export function recordHtml(r: HealthRecord, member: Member | undefined, images: 
 <style>
   @page { margin: 18mm; }
   body { font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; color: #1B2333; font-size: 13px; }
-  .brand { color: #2E4482; font-weight: 700; font-size: 14px; letter-spacing: .02em; }
+  .brand { color: #1F2E5C; font-weight: 700; font-size: 14px; letter-spacing: .02em; }
   .kind { color: #0F7A68; font-weight: 600; text-transform: uppercase; font-size: 11px; margin-top: 18px; }
   h1 { font-size: 22px; margin: 4px 0 14px; }
   table { border-collapse: collapse; width: 100%; margin-bottom: 16px; }

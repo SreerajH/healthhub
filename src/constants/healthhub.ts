@@ -4,11 +4,14 @@
 
 /** HealthHub/Colors */
 export const C = {
-  primary: '#2E4482', // navy: buttons, headings, active nav (9.3:1 on white)
-  primarySoft: '#E8ECF7',
+  // 2026-11-24 refresh: a deeper navy, teal promoted to a real second colour, one soft-lime highlight
+  primary: '#1F2E5C', // navy: buttons, headings, active nav (13:1 on white)
+  primarySoft: '#E8ECF7', // secondary actions only
   teal: '#14A38B', // success / verified fills and icons only (3.2:1, not for text)
-  tealSoft: '#E3F5F1',
-  tealText: '#0F7A68', // teal for text (5.2:1)
+  tealSoft: '#E3F5F1', // fill for positive actions (Taken, Book a test)
+  tealText: '#0F7A68', // teal for text, and the fill of positive buttons (5.2:1 with white)
+  highlight: '#E4F98A', // soft lime: one chip per screen on the navy hero card (DocNow-style), navy text on it
+  heroTint: '#EEF0FF', // lavender wash behind the Home greeting
   warning: '#B7791F', // due-soon fills and icons only
   warningSoft: '#FDF3E1',
   warningText: '#94600F',
@@ -18,7 +21,7 @@ export const C = {
   text: '#1B2333',
   textSecondary: '#5B6475',
   textInverse: '#FFFFFF',
-  background: '#F6F7FB',
+  background: '#F1F3F8', // a touch darker than before, so white cards stand clear
   card: '#FFFFFF',
   border: '#E4E7EF', // dividers, card outlines (decorative)
   borderStrong: '#858D9E', // input and control outlines (3.3:1)

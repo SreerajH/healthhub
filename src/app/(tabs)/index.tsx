@@ -23,7 +23,7 @@ import {
   type IconName,
   type Promo,
 } from '@/components/healthhub';
-import { C, Space, Type } from '@/constants/healthhub';
+import { C, Radius, Space, Type } from '@/constants/healthhub';
 import { byDateDesc } from '@/data/types';
 import { doseKey, useComingUp, useLabPackages, useLogDose, useMembers, useRecords } from '@/hooks';
 import { useAuth } from '@/lib/auth';
@@ -96,7 +96,9 @@ export default function HomeScreen() {
   };
   /** and its button does the obvious thing: directions, details, or marking a dose taken */
   const actOnComingUp = (item: (typeof comingUp)[number]) => {
-    if (item.kind === 'medicine') {
+    if (item.kind === 'medicine' && item.action.label !== 'Mark as taken') {
+      router.push('/reminders');
+    } else if (item.kind === 'medicine') {
       logDose.mutate({ key: doseKey(item.id, item.at.slice(0, 10), item.at.slice(11)), state: 'taken' });
       toast({ message: `${item.title} marked as taken` });
     } else if (item.kind === 'vaccine') {
@@ -157,8 +159,8 @@ export default function HomeScreen() {
         {loading ? (
           <CardSkeleton />
         ) : comingUp.length ? (
-          comingUp.map((item) => (
-            <ComingUpCard key={item.id} item={item} member={member}
+          comingUp.map((item, i) => (
+            <ComingUpCard key={item.id} item={item} member={member} hero={i === 0}
               onPress={() => openComingUp(item)} onAction={() => actOnComingUp(item)} />
           ))
         ) : (
@@ -225,7 +227,11 @@ function CardSkeleton({ short }: { short?: boolean }) {
 }
 
 const styles = StyleSheet.create({
-  header: { flexDirection: 'row', alignItems: 'center', gap: Space.md },
+  // a soft lavender wash behind the greeting (the calm of the Elli reference), not the whole screen
+  header: {
+    flexDirection: 'row', alignItems: 'center', gap: Space.md,
+    backgroundColor: C.heroTint, borderRadius: Radius.card, padding: Space.lg,
+  },
   qaRow: { flexDirection: 'row', justifyContent: 'space-between', gap: Space.md },
   bleed: { marginHorizontal: -Space.screen },
 });
