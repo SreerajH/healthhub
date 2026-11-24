@@ -83,8 +83,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const userId = session?.user.id;
   const devSignIn = useCallback(async () => {
-    // `__DEV__` is false in release builds, so this body (and the credentials) are stripped there
-    if (!__DEV__) return { error: 'Not available.' };
+    // off in release builds unless the demo flag is set at build time (see EXPO_PUBLIC_DEMO_LOGIN)
+    if (!__DEV__ && process.env.EXPO_PUBLIC_DEMO_LOGIN !== 'on') return { error: 'Not available.' };
     const email = process.env.EXPO_PUBLIC_DEV_EMAIL;
     const password = process.env.EXPO_PUBLIC_DEV_PASSWORD;
     if (!email || !password) return { error: 'Set EXPO_PUBLIC_DEV_EMAIL and EXPO_PUBLIC_DEV_PASSWORD in .env.' };

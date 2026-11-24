@@ -9,6 +9,9 @@ import { isValidEmail, isValidIndianMobile, toE164, useAuth, type Identifier } f
 /** Phone sign-in needs an SMS provider on the Supabase project; until then email codes are the way in. */
 const PHONE_AUTH = process.env.EXPO_PUBLIC_PHONE_AUTH === 'on';
 
+/** A one-tap demo account: always in dev, and in a release build only when built with EXPO_PUBLIC_DEMO_LOGIN=on. */
+const SHOW_DEMO = __DEV__ || process.env.EXPO_PUBLIC_DEMO_LOGIN === 'on';
+
 /** Figma "HealthHub / Sign in": a one-time code, by phone or email. */
 export default function SignInScreen() {
   const { sendCode, devSignIn } = useAuth();
@@ -114,12 +117,12 @@ export default function SignInScreen() {
           Your records are encrypted and only your account can see them.
         </InfoNote>
 
-        {__DEV__ ? (
+        {SHOW_DEMO ? (
           <View style={styles.devBox}>
             <Text style={[Type.caption, { color: C.textSecondary }]}>
-              Development build only. Skips the email code and signs in as the dev account, which has the sample family loaded.
+              Demo build. Skips the email code and signs in as a demo account with a sample family already loaded.
             </Text>
-            <Button label="Dev sign-in" icon="Settings" variant="secondary" size="M" loading={devBusy} onPress={dev} />
+            <Button label="Try the demo" icon="Heart Pulse" variant="secondary" size="M" loading={devBusy} onPress={dev} />
           </View>
         ) : null}
 
