@@ -37,10 +37,10 @@ const QUICK_ACTIONS: { label: string; icon: IconName; art?: keyof typeof TILE_AR
   { label: 'Lab tests', icon: 'Flask', art: 'lab-tests' },
   { label: 'Vaccines', icon: 'Syringe', art: 'vaccines' },
   { label: 'Medicines', icon: 'Pill', art: 'medicines' },
-  { label: 'Upload record', icon: 'Upload' },
+  { label: 'Upload record', icon: 'Upload', art: 'upload' },
   { label: 'Reminders', icon: 'Alarm', art: 'reminders' },
   { label: 'Pet care', icon: 'Paw', art: 'pet-care' },
-  { label: 'More', icon: 'Grid' },
+  { label: 'More', icon: 'Grid', art: 'more' },
 ];
 
 const PROMOS: Promo[] = [

@@ -14,6 +14,18 @@ const TONES: Record<AvatarTone, [string, string]> = {
 };
 const SIZES = { S: 32, M: 48, L: 72 } as const;
 
+/**
+ * Illustrated faces for the sample family on the demo account, keyed by lower-case first name.
+ * Anyone else (and any member with a real photo) keeps the photo → initial → icon fallback.
+ */
+const SAMPLE_FACES: Record<string, number> = {
+  aarav: require('@/assets/images/avatars/aarav.webp'),
+  priya: require('@/assets/images/avatars/priya.webp'),
+  kabir: require('@/assets/images/avatars/kabir.webp'),
+  sunita: require('@/assets/images/avatars/sunita.webp'),
+};
+const sampleFace = (name?: string) => (name ? SAMPLE_FACES[name.trim().split(/\s+/)[0].toLowerCase()] : undefined);
+
 /** First letter of the first name (one family shares a surname, so a single initial reads best). */
 export function initialOf(name: string) {
   return (name.trim()[0] ?? '?').toUpperCase();
@@ -53,6 +65,8 @@ export function Avatar({
       accessibilityLabel={label}>
       {photo && !failed ? (
         <Image source={{ uri: photo }} style={StyleSheet.absoluteFill} contentFit="cover" onError={() => setFailed(true)} />
+      ) : !initials && sampleFace(name) ? (
+        <Image source={sampleFace(name)} style={StyleSheet.absoluteFill} contentFit="cover" />
       ) : text ? (
         <Text style={[type, { color: fg }]} allowFontScaling={false}>
           {text}

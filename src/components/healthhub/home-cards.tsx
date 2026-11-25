@@ -297,7 +297,7 @@ export function PromoCarousel({ promos, width, onPress }: { promos: Promo[]; wid
               <Text style={[Type.caption, { color: C.textSecondary }]} numberOfLines={2}>{p.message}</Text>
               <Text style={[Type.bodyMedium, { color: p.tone === 'teal' ? C.tealText : C.primary }]}>{p.link}</Text>
             </View>
-            {p.art ? <Image source={p.art} style={{ width: 72, height: 72 }} contentFit="contain" /> : null}
+            {p.art ? <Image source={p.art} style={{ width: 72, height: 72, borderRadius: Radius.card }} contentFit="contain" /> : null}
           </Pressable>
         ))}
       </ScrollView>
